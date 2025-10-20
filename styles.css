@@ -1,3 +1,7 @@
+
+@import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&display=swap');
+
+
 /* ===============================================
    RESET & BASE STYLES
    =============================================== */
@@ -8,14 +12,14 @@
 }
 
 :root {
-    /* Colores principales - Limpio y profesional */
-    --primary-color: #1a365d;
-    --primary-dark: #0f2847;
-    --primary-light: #2c5282;
+    /* Colores principales inspirados en el escudo */
+    --primary-color: #7a1c32;
+    --primary-dark: #4e0f1f;
+    --primary-light: #a83247;
     
     /* Colores secundarios */
-    --secondary-color: #2d3748;
-    --accent-color: #3182ce;
+    --secondary-color: #5a1a2a;
+    --accent-color: #c15163;
     
     /* Colores neutros */
     --white: #FFFFFF;
@@ -32,6 +36,7 @@
     /* Tipografía */
     --font-primary: 'Montserrat', sans-serif;
     --font-secondary: 'Open Sans', sans-serif;
+    --font-logo: 'Cinzel', serif;
     
     /* Sombras */
     --shadow-sm: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06);
@@ -85,15 +90,16 @@ body {
 }
 
 .logo h1 {
-    font-family: var(--font-primary);
-    font-size: 1.6rem;
-    font-weight: 800;
-    color: var(--gray-900);
-    letter-spacing: -0.5px;
+   font-family: var(--font-logo);
+    font-size: 1.8rem;
+    font-weight: 600;
+    color: var(--primary-color);
+    letter-spacing: 1px;
+    text-transform: uppercase;
 }
 
 .logo h1 span {
-    color: var(--primary-color);
+   color: var(--primary-light);
 }
 
 .nav-menu {
@@ -1200,7 +1206,7 @@ body {
    FOOTER
    =============================================== */
 .footer {
-    background: linear-gradient(135deg, var(--secondary-color) 0%, #2C4A5E 100%);
+     background: linear-gradient(135deg, var(--secondary-color) 0%, var(--primary-dark) 100%);
     color: var(--white);
     padding: 4rem 0 2rem;
     position: relative;
@@ -1926,7 +1932,7 @@ body {
    =============================================== */
 .cta-section {
     padding: 5rem 0;
-    background: linear-gradient(135deg, var(--secondary-color), #1a252f);
+     background: linear-gradient(135deg, var(--secondary-color), var(--primary-dark));
     color: var(--white);
 }
 

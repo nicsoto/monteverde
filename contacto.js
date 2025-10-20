@@ -45,8 +45,15 @@ document.addEventListener('DOMContentLoaded', function() {
             }
             
             try {
+                   // Determinar URL base de la API
+                const API_BASE_URL = (window.API_BASE_URL)
+                    ? window.API_BASE_URL.replace(/\/$/, '')
+                    : ((['localhost', '127.0.0.1'].includes(window.location.hostname))
+                        ? 'http://localhost:3000'
+                        : window.location.origin);
+
                 // Enviar a la API
-                const response = await fetch('http://localhost:3000/api/contacto/enviar', {
+                 const response = await fetch(`${API_BASE_URL}/api/contacto/enviar`, {
                     method: 'POST',
                     headers: {
                         'Content-Type': 'application/json',

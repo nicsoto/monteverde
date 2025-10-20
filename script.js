@@ -123,9 +123,16 @@ async function cargarUltimasNoticias() {
     const noticiasContainer = document.getElementById('ultimas-noticias');
     
     if (!noticiasContainer) return;
+
+      const API_BASE_URL = (window.API_BASE_URL)
+        ? window.API_BASE_URL.replace(/\/$/, '')
+        : ((['localhost', '127.0.0.1'].includes(window.location.hostname))
+            ? 'http://localhost:3000'
+            : window.location.origin);
+
     
     try {
-        const response = await fetch('http://localhost:3000/api/noticias?limit=3');
+        const response = await fetch(`${API_BASE_URL}/api/noticias?limit=3`);
         
         if (!response.ok) {
             throw new Error('Error al cargar noticias');
@@ -133,19 +140,20 @@ async function cargarUltimasNoticias() {
         
         const data = await response.json();
         
-        if (data.success && data.data.length > 0) {
+         if (data.success && Array.isArray(data.data) && data.data.length > 0) {
             noticiasContainer.innerHTML = '';
             
             data.data.forEach(noticia => {
-                const fecha = new Date(noticia.fecha_publicacion);
+               const fecha = noticia.fecha ? new Date(noticia.fecha) : new Date();
                 const dia = fecha.getDate().toString().padStart(2, '0');
                 const mes = fecha.toLocaleDateString('es-ES', { month: 'short' }).replace('.', '');
                 const anio = fecha.getFullYear();
                 
                 // Limitar resumen a 150 caracteres
-                const resumenCorto = noticia.resumen.length > 150 
-                    ? noticia.resumen.substring(0, 150) + '...'
-                    : noticia.resumen;
+                const resumen = noticia.resumen || noticia.contenido || '';
+                const resumenCorto = resumen.length > 150
+                    ? resumen.substring(0, 150) + '...'
+                    : resumen;
                 
                 // Determinar color de categoría
                 const categoriaColors = {
@@ -154,14 +162,18 @@ async function cargarUltimasNoticias() {
                     'cultural': '#C9A961',
                     'institucional': '#495057'
                 };
-                const categoriaColor = categoriaColors[noticia.categoria] || '#6C757D';
+                 const categoriaKey = noticia.categoria ? noticia.categoria.toLowerCase() : '';
+                const categoriaColor = categoriaColors[categoriaKey] || '#6C757D';
+                const categoriaLabel = categoriaKey
+                    ? categoriaKey.charAt(0).toUpperCase() + categoriaKey.slice(1)
+                    : 'General';
                 
                 const noticiaHTML = `
                     <article class="noticia-card">
                         <div class="noticia-fecha">${dia} ${mes} ${anio}</div>
                         <div class="noticia-contenido">
                             <span class="noticia-categoria" style="background: ${categoriaColor}">
-                                ${noticia.categoria.charAt(0).toUpperCase() + noticia.categoria.slice(1)}
+                               ${categoriaLabel}
                             </span>
                             <h3>${noticia.titulo}</h3>
                             <p>${resumenCorto}</p>

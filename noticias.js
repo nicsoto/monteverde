@@ -21,14 +21,20 @@ document.addEventListener('DOMContentLoaded', function() {
     async function cargarNoticias() {
         try {
             mostrarCargando();
-            const response = await fetch('http://localhost:3000/api/noticias');
+             const API_BASE_URL = (window.API_BASE_URL)
+                ? window.API_BASE_URL.replace(/\/$/, '')
+                : ((['localhost', '127.0.0.1'].includes(window.location.hostname))
+                    ? 'http://localhost:3000'
+                    : window.location.origin);
+
+            const response = await fetch(`${API_BASE_URL}/api/noticias`);
             
             if (!response.ok) {
                 throw new Error('Error al cargar las noticias');
             }
             
             const data = await response.json();
-            todasLasNoticias = data.noticias || [];
+            todasLasNoticias = Array.isArray(data.data) ? data.data : [];
             noticiasFiltradas = [...todasLasNoticias];
             
             mostrarNoticias();
@@ -95,7 +101,7 @@ document.addEventListener('DOMContentLoaded', function() {
     }
     
     function crearTarjetaNoticia(noticia) {
-        const fecha = new Date(noticia.fecha);
+        const fecha = noticia.fecha ? new Date(noticia.fecha) : new Date();
         const fechaFormateada = fecha.toLocaleDateString('es-CL', {
             year: 'numeric',
             month: 'long',
@@ -109,15 +115,18 @@ document.addEventListener('DOMContentLoaded', function() {
             'institucional': '#dc2626'
         };
         
-        const colorCategoria = categoriaColores[noticia.categoria] || '#6b7280';
+         const categoriaKey = noticia.categoria ? noticia.categoria.toLowerCase() : '';
+        const categoria = categoriaKey ? categoriaKey.charAt(0).toUpperCase() + categoriaKey.slice(1) : 'General';
+        const colorCategoria = categoriaColores[categoriaKey] || '#6b7280';
+        const resumen = noticia.resumen || noticia.contenido || '';
         
         return `
             <article class="noticia-card-full">
                 <div class="noticia-imagen">
-                    <img src="${noticia.imagen || 'https://via.placeholder.com/400x250?text=Colegio+Monteverde'}" 
+                    <img src="${noticia.imagen || 'https://via.placeholder.com/400x250?text=Colegio+Monteverde'}"
                          alt="${noticia.titulo}">
                     <span class="noticia-categoria" style="background-color: ${colorCategoria}">
-                        ${noticia.categoria}
+                        ${categoria}
                     </span>
                 </div>
                 <div class="noticia-contenido">
@@ -125,7 +134,7 @@ document.addEventListener('DOMContentLoaded', function() {
                         <span class="noticia-fecha">📅 ${fechaFormateada}</span>
                     </div>
                     <h3 class="noticia-titulo">${noticia.titulo}</h3>
-                    <p class="noticia-resumen">${noticia.contenido.substring(0, 150)}${noticia.contenido.length > 150 ? '...' : ''}</p>
+                   <p class="noticia-resumen">${resumen.substring(0, 150)}${resumen.length > 150 ? '...' : ''}</p>
                     <button class="btn-leer-mas" onclick="verNoticiaCompleta(${noticia.id})">
                         Leer más →
                     </button>
@@ -139,7 +148,7 @@ document.addEventListener('DOMContentLoaded', function() {
         const noticia = todasLasNoticias.find(n => n.id === id);
         if (!noticia) return;
         
-        const fecha = new Date(noticia.fecha);
+         const fecha = noticia.fecha ? new Date(noticia.fecha) : new Date();
         const fechaFormateada = fecha.toLocaleDateString('es-CL', {
             year: 'numeric',
             month: 'long',
@@ -153,7 +162,11 @@ document.addEventListener('DOMContentLoaded', function() {
             'institucional': '#dc2626'
         };
         
-        const colorCategoria = categoriaColores[noticia.categoria] || '#6b7280';
+        
+        const categoriaKey = noticia.categoria ? noticia.categoria.toLowerCase() : '';
+        const categoria = categoriaKey ? categoriaKey.charAt(0).toUpperCase() + categoriaKey.slice(1) : 'General';
+        const colorCategoria = categoriaColores[categoriaKey] || '#6b7280';
+        const contenido = noticia.contenido || noticia.resumen || '';
         
         // Crear modal
         const modal = document.createElement('div');
@@ -173,7 +186,7 @@ document.addEventListener('DOMContentLoaded', function() {
                     </div>
                     <h2>${noticia.titulo}</h2>
                     <div class="modal-contenido-texto">
-                        ${noticia.contenido}
+                        ${contenido}
                     </div>
                 </div>
             </div>
