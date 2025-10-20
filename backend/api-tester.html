@@ -1,0 +1,415 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>API Tester - Colegio Monteverde</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, sans-serif;
+            background: #f5f5f5;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        h1 {
+            color: #8B1538;
+            margin-bottom: 30px;
+            text-align: center;
+        }
+
+        .section {
+            background: white;
+            padding: 20px;
+            margin-bottom: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+
+        h2 {
+            color: #2C3E50;
+            margin-bottom: 15px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid #8B1538;
+        }
+
+        button {
+            background: #8B1538;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 14px;
+            margin: 5px;
+        }
+
+        button:hover {
+            background: #6B0F2A;
+        }
+
+        pre {
+            background: #2C3E50;
+            color: #00ff00;
+            padding: 15px;
+            border-radius: 4px;
+            overflow-x: auto;
+            margin-top: 10px;
+        }
+
+        .form-group {
+            margin-bottom: 15px;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: 500;
+            color: #2C3E50;
+        }
+
+        input, textarea {
+            width: 100%;
+            padding: 8px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            font-family: inherit;
+        }
+
+        textarea {
+            min-height: 100px;
+        }
+
+        .success {
+            background: #d4edda;
+            color: #155724;
+            padding: 10px;
+            border-radius: 4px;
+            margin-top: 10px;
+        }
+
+        .error {
+            background: #f8d7da;
+            color: #721c24;
+            padding: 10px;
+            border-radius: 4px;
+            margin-top: 10px;
+        }
+
+        .item {
+            background: #f8f9fa;
+            padding: 15px;
+            margin: 10px 0;
+            border-radius: 4px;
+            border-left: 4px solid #8B1538;
+        }
+
+        .item h3 {
+            color: #8B1538;
+            margin-bottom: 8px;
+        }
+
+        .item p {
+            color: #6c757d;
+            margin: 5px 0;
+        }
+
+        .date {
+            font-size: 12px;
+            color: #999;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>🧪 API Tester - Colegio Monteverde</h1>
+
+        <!-- Noticias -->
+        <div class="section">
+            <h2>📰 Noticias</h2>
+            <button onclick="getNoticias()">Obtener Noticias</button>
+            <div id="noticias-result"></div>
+        </div>
+
+        <!-- Crear Noticia -->
+        <div class="section">
+            <h2>➕ Crear Noticia</h2>
+            <div class="form-group">
+                <label>Título:</label>
+                <input type="text" id="noticia-titulo" placeholder="Título de la noticia">
+            </div>
+            <div class="form-group">
+                <label>Contenido:</label>
+                <textarea id="noticia-contenido" placeholder="Contenido de la noticia"></textarea>
+            </div>
+            <div class="form-group">
+                <label>Resumen:</label>
+                <input type="text" id="noticia-resumen" placeholder="Resumen breve">
+            </div>
+            <div class="form-group">
+                <label>Fecha:</label>
+                <input type="date" id="noticia-fecha">
+            </div>
+            <button onclick="crearNoticia()">Crear Noticia</button>
+            <div id="create-noticia-result"></div>
+        </div>
+
+        <!-- Circulares -->
+        <div class="section">
+            <h2>📋 Circulares</h2>
+            <button onclick="getCirculares()">Obtener Circulares</button>
+            <div id="circulares-result"></div>
+        </div>
+
+        <!-- Formulario de Contacto -->
+        <div class="section">
+            <h2>✉️ Enviar Mensaje de Contacto</h2>
+            <div class="form-group">
+                <label>Nombre:</label>
+                <input type="text" id="contacto-nombre" placeholder="Tu nombre">
+            </div>
+            <div class="form-group">
+                <label>Email:</label>
+                <input type="email" id="contacto-email" placeholder="tu@email.com">
+            </div>
+            <div class="form-group">
+                <label>Teléfono:</label>
+                <input type="tel" id="contacto-telefono" placeholder="+56912345678">
+            </div>
+            <div class="form-group">
+                <label>Asunto:</label>
+                <input type="text" id="contacto-asunto" placeholder="Asunto del mensaje">
+            </div>
+            <div class="form-group">
+                <label>Mensaje:</label>
+                <textarea id="contacto-mensaje" placeholder="Tu mensaje aquí..."></textarea>
+            </div>
+            <button onclick="enviarContacto()">Enviar Mensaje</button>
+            <div id="contacto-result"></div>
+        </div>
+
+        <!-- Documentos -->
+        <div class="section">
+            <h2>📄 Documentos</h2>
+            <button onclick="getDocumentos()">Obtener Documentos</button>
+            <button onclick="getDocumentos('listas-utiles')">Listas de Útiles</button>
+            <button onclick="getDocumentos('reglamentos')">Reglamentos</button>
+            <div id="documentos-result"></div>
+        </div>
+
+        <!-- Mensajes Recibidos -->
+        <div class="section">
+            <h2>📬 Mensajes Recibidos (Admin)</h2>
+            <button onclick="getMensajes()">Ver Mensajes</button>
+            <button onclick="getMensajes(false)">Solo No Leídos</button>
+            <div id="mensajes-result"></div>
+        </div>
+    </div>
+
+    <script>
+        const API_URL = 'http://localhost:3000/api';
+
+        // Noticias
+        async function getNoticias() {
+            try {
+                const response = await fetch(`${API_URL}/noticias`);
+                const data = await response.json();
+                
+                let html = '<div class="success">✅ Noticias obtenidas exitosamente</div>';
+                
+                if (data.data && data.data.length > 0) {
+                    data.data.forEach(noticia => {
+                        html += `
+                            <div class="item">
+                                <h3>${noticia.titulo}</h3>
+                                <p>${noticia.resumen || noticia.contenido.substring(0, 150) + '...'}</p>
+                                <p class="date">📅 ${noticia.fecha}</p>
+                            </div>
+                        `;
+                    });
+                }
+                
+                html += `<pre>${JSON.stringify(data, null, 2)}</pre>`;
+                document.getElementById('noticias-result').innerHTML = html;
+            } catch (error) {
+                document.getElementById('noticias-result').innerHTML = 
+                    `<div class="error">❌ Error: ${error.message}</div>`;
+            }
+        }
+
+        async function crearNoticia() {
+            const titulo = document.getElementById('noticia-titulo').value;
+            const contenido = document.getElementById('noticia-contenido').value;
+            const resumen = document.getElementById('noticia-resumen').value;
+            const fecha = document.getElementById('noticia-fecha').value;
+
+            try {
+                const response = await fetch(`${API_URL}/noticias`, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ titulo, contenido, resumen, fecha })
+                });
+                
+                const data = await response.json();
+                
+                if (data.success) {
+                    document.getElementById('create-noticia-result').innerHTML = 
+                        `<div class="success">✅ ${data.message}</div><pre>${JSON.stringify(data.data, null, 2)}</pre>`;
+                    
+                    // Limpiar formulario
+                    document.getElementById('noticia-titulo').value = '';
+                    document.getElementById('noticia-contenido').value = '';
+                    document.getElementById('noticia-resumen').value = '';
+                    document.getElementById('noticia-fecha').value = '';
+                } else {
+                    document.getElementById('create-noticia-result').innerHTML = 
+                        `<div class="error">❌ ${data.error}</div>`;
+                }
+            } catch (error) {
+                document.getElementById('create-noticia-result').innerHTML = 
+                    `<div class="error">❌ Error: ${error.message}</div>`;
+            }
+        }
+
+        // Circulares
+        async function getCirculares() {
+            try {
+                const response = await fetch(`${API_URL}/circulares`);
+                const data = await response.json();
+                
+                let html = '<div class="success">✅ Circulares obtenidas exitosamente</div>';
+                
+                if (data.data && data.data.length > 0) {
+                    data.data.forEach(circular => {
+                        html += `
+                            <div class="item">
+                                <h3>${circular.numero} - ${circular.titulo}</h3>
+                                <p>${circular.contenido.substring(0, 150)}...</p>
+                                <p class="date">📅 ${circular.fecha} | 🏷️ ${circular.tipo}</p>
+                            </div>
+                        `;
+                    });
+                }
+                
+                html += `<pre>${JSON.stringify(data, null, 2)}</pre>`;
+                document.getElementById('circulares-result').innerHTML = html;
+            } catch (error) {
+                document.getElementById('circulares-result').innerHTML = 
+                    `<div class="error">❌ Error: ${error.message}</div>`;
+            }
+        }
+
+        // Contacto
+        async function enviarContacto() {
+            const nombre = document.getElementById('contacto-nombre').value;
+            const email = document.getElementById('contacto-email').value;
+            const telefono = document.getElementById('contacto-telefono').value;
+            const asunto = document.getElementById('contacto-asunto').value;
+            const mensaje = document.getElementById('contacto-mensaje').value;
+
+            try {
+                const response = await fetch(`${API_URL}/contacto`, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ nombre, email, telefono, asunto, mensaje })
+                });
+                
+                const data = await response.json();
+                
+                if (data.success) {
+                    document.getElementById('contacto-result').innerHTML = 
+                        `<div class="success">✅ ${data.message}</div><pre>${JSON.stringify(data, null, 2)}</pre>`;
+                    
+                    // Limpiar formulario
+                    document.getElementById('contacto-nombre').value = '';
+                    document.getElementById('contacto-email').value = '';
+                    document.getElementById('contacto-telefono').value = '';
+                    document.getElementById('contacto-asunto').value = '';
+                    document.getElementById('contacto-mensaje').value = '';
+                } else {
+                    document.getElementById('contacto-result').innerHTML = 
+                        `<div class="error">❌ ${JSON.stringify(data.errors || data.error)}</div>`;
+                }
+            } catch (error) {
+                document.getElementById('contacto-result').innerHTML = 
+                    `<div class="error">❌ Error: ${error.message}</div>`;
+            }
+        }
+
+        // Documentos
+        async function getDocumentos(categoria = '') {
+            try {
+                const url = categoria ? `${API_URL}/documentos?categoria=${categoria}` : `${API_URL}/documentos`;
+                const response = await fetch(url);
+                const data = await response.json();
+                
+                let html = '<div class="success">✅ Documentos obtenidos exitosamente</div>';
+                
+                if (data.data && data.data.length > 0) {
+                    data.data.forEach(doc => {
+                        html += `
+                            <div class="item">
+                                <h3>📄 ${doc.nombre}</h3>
+                                <p>${doc.descripcion || ''}</p>
+                                <p class="date">🏷️ ${doc.categoria} | 📦 ${(doc.tamano / 1024).toFixed(2)} KB</p>
+                            </div>
+                        `;
+                    });
+                }
+                
+                html += `<pre>${JSON.stringify(data, null, 2)}</pre>`;
+                document.getElementById('documentos-result').innerHTML = html;
+            } catch (error) {
+                document.getElementById('documentos-result').innerHTML = 
+                    `<div class="error">❌ Error: ${error.message}</div>`;
+            }
+        }
+
+        // Mensajes
+        async function getMensajes(todos = true) {
+            try {
+                const url = todos ? `${API_URL}/contacto` : `${API_URL}/contacto?leido=false`;
+                const response = await fetch(url);
+                const data = await response.json();
+                
+                let html = '<div class="success">✅ Mensajes obtenidos exitosamente</div>';
+                
+                if (data.data && data.data.length > 0) {
+                    data.data.forEach(msg => {
+                        html += `
+                            <div class="item">
+                                <h3>✉️ ${msg.asunto}</h3>
+                                <p><strong>De:</strong> ${msg.nombre} (${msg.email})</p>
+                                ${msg.telefono ? `<p><strong>Tel:</strong> ${msg.telefono}</p>` : ''}
+                                <p>${msg.mensaje}</p>
+                                <p class="date">📅 ${msg.created_at} | ${msg.leido ? '✅ Leído' : '📬 No leído'}</p>
+                            </div>
+                        `;
+                    });
+                } else {
+                    html += '<p>No hay mensajes</p>';
+                }
+                
+                html += `<pre>${JSON.stringify(data, null, 2)}</pre>`;
+                document.getElementById('mensajes-result').innerHTML = html;
+            } catch (error) {
+                document.getElementById('mensajes-result').innerHTML = 
+                    `<div class="error">❌ Error: ${error.message}</div>`;
+            }
+        }
+
+        // Cargar fecha actual por defecto
+        document.getElementById('noticia-fecha').valueAsDate = new Date();
+    </script>
+</body>
+</html>

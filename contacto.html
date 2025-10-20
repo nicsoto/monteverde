@@ -1,0 +1,292 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contacto - Colegio Monteverde</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&family=Open+Sans:wght@400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="container">
+            <nav class="navbar">
+                <div class="logo">
+                    <h1>Colegio<span>Monteverde</span></h1>
+                </div>
+                <ul class="nav-menu">
+                    <li><a href="index.html" class="nav-link">Inicio</a></li>
+                    <li><a href="nosotros.html" class="nav-link">Nosotros</a></li>
+                    <li><a href="vida-escolar.html" class="nav-link">Vida Escolar</a></li>
+                    <li><a href="noticias.html" class="nav-link">Noticias</a></li>
+                    <li><a href="admision.html" class="nav-link">Admisión</a></li>
+                    <li><a href="apoderados.html" class="nav-link">Apoderados</a></li>
+                    <li><a href="contacto.html" class="nav-link active">Contacto</a></li>
+                </ul>
+                <div class="hamburger">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Page Header -->
+    <section class="page-header">
+        <div class="container">
+            <h1>Contacto</h1>
+            <p>Estamos aquí para ayudarte. Comunícate con nosotros</p>
+        </div>
+    </section>
+
+    <!-- Contacto Principal -->
+    <section class="contacto-principal">
+        <div class="container">
+            <div class="contacto-layout">
+                <!-- Formulario -->
+                <div class="contacto-form-container">
+                    <h2>Envíanos un Mensaje</h2>
+                    <p>Completa el formulario y nos pondremos en contacto contigo a la brevedad</p>
+                    
+                    <form id="contactForm" class="contact-form">
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="nombre">Nombre Completo *</label>
+                                <input type="text" id="nombre" name="nombre" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="email">Correo Electrónico *</label>
+                                <input type="email" id="email" name="email" required>
+                            </div>
+                        </div>
+                        
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="telefono">Teléfono</label>
+                                <input type="tel" id="telefono" name="telefono">
+                            </div>
+                            <div class="form-group">
+                                <label for="asunto">Asunto *</label>
+                                <select id="asunto" name="asunto" required>
+                                    <option value="">Selecciona un asunto</option>
+                                    <option value="Consulta General">Consulta General</option>
+                                    <option value="Admisión">Admisión</option>
+                                    <option value="Información Académica">Información Académica</option>
+                                    <option value="Recursos para Apoderados">Recursos para Apoderados</option>
+                                    <option value="Becas">Becas</option>
+                                    <option value="Pagos">Pagos</option>
+                                    <option value="Otro">Otro</option>
+                                </select>
+                            </div>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="mensaje">Mensaje *</label>
+                            <textarea id="mensaje" name="mensaje" rows="6" required></textarea>
+                        </div>
+                        
+                        <div id="formStatus" class="form-status"></div>
+                        
+                        <button type="submit" class="btn btn-primary btn-lg" id="submitBtn">
+                            <span class="btn-text">Enviar Mensaje</span>
+                            <span class="btn-loading" style="display: none;">Enviando...</span>
+                        </button>
+                    </form>
+                </div>
+                
+                <!-- Información de Contacto -->
+                <div class="contacto-info-sidebar">
+                    <div class="info-card-contact">
+                        <div class="info-icon-contact">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path>
+                                <circle cx="12" cy="10" r="3"></circle>
+                            </svg>
+                        </div>
+                        <h3>Sede Tagua Tagua</h3>
+                        <p>Tagua Tagua #7575<br>Peñalolén, Santiago</p>
+                    </div>
+                    
+                    <div class="info-card-contact">
+                        <div class="info-icon-contact">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path>
+                            </svg>
+                        </div>
+                        <h3>Teléfonos Sede Tagua Tagua</h3>
+                        <p>
+                            +56 22 278 07 58<br>
+                            +56 22 278 40 51<br>
+                            +56 22 278 57 96<br>
+                            +56 9 775 770 01
+                        </p>
+                    </div>
+                    
+                    <div class="info-card-contact">
+                        <div class="info-icon-contact">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path>
+                            </svg>
+                        </div>
+                        <h3>Teléfonos Sede Caburga</h3>
+                        <p>
+                            Secretaría: +56 22 279 15 11<br>
+                            Sub Dirección: +56 26 465 89 01<br>
+                            Coordinación: +56 26 465 89 02
+                        </p>
+                    </div>
+                    
+                    <div class="info-card-contact">
+                        <div class="info-icon-contact">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
+                                <polyline points="22,6 12,13 2,6"></polyline>
+                            </svg>
+                        </div>
+                        <h3>Email</h3>
+                        <p>colegios@colegiomonteverde.cl</p>
+                    </div>
+                    
+                    <div class="info-card-contact">
+                        <div class="info-icon-contact">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <circle cx="12" cy="12" r="10"></circle>
+                                <polyline points="12 6 12 12 16 14"></polyline>
+                            </svg>
+                        </div>
+                        <h3>Horario de Atención</h3>
+                        <p>
+                            <strong>Lunes a Viernes</strong><br>
+                            08:00 - 12:30 hrs<br>
+                            14:00 - 17:30 hrs
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Mapa Ubicaciones -->
+    <section class="ubicaciones-section">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Nuestras Ubicaciones</h2>
+                <div class="section-underline"></div>
+            </div>
+            <div class="ubicaciones-grid">
+                <div class="ubicacion-card">
+                    <div class="ubicacion-imagen">
+                        <div class="mapa-placeholder">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="80" height="80" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path>
+                                <circle cx="12" cy="10" r="3"></circle>
+                            </svg>
+                        </div>
+                    </div>
+                    <div class="ubicacion-info">
+                        <h3>Sede Tagua Tagua</h3>
+                        <p class="direccion">Tagua Tagua #7575, Peñalolén, Santiago</p>
+                        <p class="niveles"><strong>Niveles:</strong> Pre-Kinder a 6° Básico</p>
+                        <a href="https://maps.google.com/?q=Tagua+Tagua+7575+Peñalolén" target="_blank" class="btn btn-outline btn-sm">Ver en Google Maps</a>
+                    </div>
+                </div>
+                
+                <div class="ubicacion-card">
+                    <div class="ubicacion-imagen">
+                        <div class="mapa-placeholder">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="80" height="80" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path>
+                                <circle cx="12" cy="10" r="3"></circle>
+                            </svg>
+                        </div>
+                    </div>
+                    <div class="ubicacion-info">
+                        <h3>Sede Caburga</h3>
+                        <p class="direccion">Caburga, Peñalolén, Santiago</p>
+                        <p class="niveles"><strong>Niveles:</strong> 7° Básico a 4° Medio</p>
+                        <a href="https://maps.google.com/?q=Caburga+Peñalolén" target="_blank" class="btn btn-outline btn-sm">Ver en Google Maps</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Preguntas Frecuentes -->
+    <section class="faq-contacto">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Preguntas Frecuentes</h2>
+                <div class="section-underline"></div>
+            </div>
+            <div class="faq-grid">
+                <div class="faq-item">
+                    <h3>¿Cuánto tiempo tardan en responder?</h3>
+                    <p>Respondemos todos los mensajes en un plazo máximo de 24 horas hábiles.</p>
+                </div>
+                <div class="faq-item">
+                    <h3>¿Puedo agendar una visita al colegio?</h3>
+                    <p>Sí, puedes agendar una visita llamando a nuestros teléfonos o enviando un mensaje a través del formulario.</p>
+                </div>
+                <div class="faq-item">
+                    <h3>¿Atienden en fines de semana?</h3>
+                    <p>Nuestras oficinas están cerradas los fines de semana, pero puedes enviarnos un mensaje y te responderemos el lunes.</p>
+                </div>
+                <div class="faq-item">
+                    <h3>¿Dónde puedo solicitar información sobre admisión?</h3>
+                    <p>Puedes llamarnos, escribirnos o visitar nuestra <a href="admision.html">página de admisión</a> para más información.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>Colegio<span>Monteverde</span></h3>
+                    <p>Formando el futuro de nuestros estudiantes con educación de excelencia.</p>
+                    <p><strong>Sede Tagua Tagua:</strong> Tagua Tagua 7575, Peñalolén</p>
+                    <p><strong>Sede Caburga:</strong> Caburga 7750, Peñalolén</p>
+                </div>
+                <div class="footer-section">
+                    <h4>Enlaces Rápidos</h4>
+                    <ul>
+                        <li><a href="index.html">Inicio</a></li>
+                        <li><a href="nosotros.html">Nosotros</a></li>
+                        <li><a href="vida-escolar.html">Vida Escolar</a></li>
+                        <li><a href="noticias.html">Noticias</a></li>
+                        <li><a href="admision.html">Admisión</a></li>
+                        <li><a href="apoderados.html">Apoderados</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Información de Pago</h4>
+                    <p><strong>Banco de Chile</strong></p>
+                    <p>Cuenta Corriente: 8007871307</p>
+                    <p>RUT: 65.135.544-3</p>
+                    <p>Fundación Educacional Monteverde</p>
+                </div>
+                <div class="footer-section">
+                    <h4>Contacto</h4>
+                    <p>colegios@colegiomonteverde.cl</p>
+                    <p><strong>Sede Tagua Tagua:</strong> +56 22 278 07 58</p>
+                    <p><strong>Sede Caburga:</strong> +56 22 278 07 59</p>
+                    <p><strong>Horario:</strong> Lunes a Viernes, 8:00 - 17:00</p>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 Colegio Monteverde. Todos los derechos reservados.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+    <script src="contacto.js"></script>
+    <script src="seo-schema.js"></script>
+</body>
+</html>

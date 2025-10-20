@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Noticias y Circulares - Colegio Monteverde</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&family=Open+Sans:wght@400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="container">
+            <nav class="navbar">
+                <div class="logo">
+                    <h1>Colegio<span>Monteverde</span></h1>
+                </div>
+                <ul class="nav-menu">
+                    <li><a href="index.html" class="nav-link">Inicio</a></li>
+                    <li><a href="nosotros.html" class="nav-link">Nosotros</a></li>
+                    <li><a href="vida-escolar.html" class="nav-link">Vida Escolar</a></li>
+                    <li><a href="noticias.html" class="nav-link active">Noticias</a></li>
+                    <li><a href="admision.html" class="nav-link">Admisión</a></li>
+                    <li><a href="apoderados.html" class="nav-link">Apoderados</a></li>
+                    <li><a href="contacto.html" class="nav-link">Contacto</a></li>
+                </ul>
+                <div class="hamburger">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Page Header -->
+    <section class="page-header">
+        <div class="container">
+            <h1>Noticias y Circulares</h1>
+            <p>Mantente informado sobre las novedades y actividades de nuestra comunidad</p>
+        </div>
+    </section>
+
+    <!-- Filtros y Búsqueda -->
+    <section class="noticias-filtros">
+        <div class="container">
+            <div class="filtros-container">
+                <div class="filtros-grupo">
+                    <h3>Filtrar por Categoría:</h3>
+                    <div class="filtros-botones">
+                        <button class="filtro-btn active" data-categoria="todas">Todas</button>
+                        <button class="filtro-btn" data-categoria="academica">Académicas</button>
+                        <button class="filtro-btn" data-categoria="deportiva">Deportivas</button>
+                        <button class="filtro-btn" data-categoria="cultural">Culturales</button>
+                        <button class="filtro-btn" data-categoria="institucional">Institucionales</button>
+                    </div>
+                </div>
+                
+                <div class="busqueda-grupo">
+                    <div class="busqueda-input-container">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <circle cx="11" cy="11" r="8"></circle>
+                            <path d="m21 21-4.35-4.35"></path>
+                        </svg>
+                        <input type="text" id="busquedaNoticias" placeholder="Buscar noticias...">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Lista de Noticias -->
+    <section class="noticias-lista">
+        <div class="container">
+            <div id="noticiasContainer" class="noticias-grid-page">
+                <!-- Loading -->
+                <div class="loading-container">
+                    <div class="loading-spinner"></div>
+                    <p>Cargando noticias...</p>
+                </div>
+            </div>
+            
+            <!-- Paginación -->
+            <div id="paginacion" class="paginacion" style="display: none;">
+                <button id="btnPrevPage" class="btn-pag">← Anterior</button>
+                <span id="paginaInfo" class="pagina-info"></span>
+                <button id="btnNextPage" class="btn-pag">Siguiente →</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>Colegio<span>Monteverde</span></h3>
+                    <p>Formando el futuro de nuestros estudiantes con educación de excelencia.</p>
+                    <p><strong>Sede Tagua Tagua:</strong> Tagua Tagua 7575, Peñalolén</p>
+                    <p><strong>Sede Caburga:</strong> Caburga 7750, Peñalolén</p>
+                </div>
+                <div class="footer-section">
+                    <h4>Enlaces Rápidos</h4>
+                    <ul>
+                        <li><a href="index.html">Inicio</a></li>
+                        <li><a href="nosotros.html">Nosotros</a></li>
+                        <li><a href="vida-escolar.html">Vida Escolar</a></li>
+                        <li><a href="noticias.html">Noticias</a></li>
+                        <li><a href="admision.html">Admisión</a></li>
+                        <li><a href="apoderados.html">Apoderados</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Información de Pago</h4>
+                    <p><strong>Banco de Chile</strong></p>
+                    <p>Cuenta Corriente: 8007871307</p>
+                    <p>RUT: 65.135.544-3</p>
+                    <p>Fundación Educacional Monteverde</p>
+                </div>
+                <div class="footer-section">
+                    <h4>Contacto</h4>
+                    <p>colegios@colegiomonteverde.cl</p>
+                    <p><strong>Sede Tagua Tagua:</strong> +56 22 278 07 58</p>
+                    <p><strong>Sede Caburga:</strong> +56 22 278 07 59</p>
+                    <p><strong>Horario:</strong> Lunes a Viernes, 8:00 - 17:00</p>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 Colegio Monteverde. Todos los derechos reservados.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+    <script src="noticias.js"></script>
+    <script src="seo-schema.js"></script>
+</body>
+</html>
